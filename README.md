@@ -1,2 +1,3 @@
 # First-Game
-Jueguito basico de pelotita y barrita en java. 
+
+Jueguito básico de pelotita y barrita en Java. 
