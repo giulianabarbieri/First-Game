@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package juego;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -15,19 +8,19 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 @SuppressWarnings("serial")
 
 public class Juego extends JPanel{
-       
-        Ball ball = new Ball(this);
-        Racquet racquet = new Racquet(this);
-        int speed = 1;
-        
-        private int getScore() {
+    Ball ball = new Ball(this);
+    Racquet racquet = new Racquet(this);
+    int speed = 1;
+    
+    private int getScore() {
 		return speed - 1;
 	}
-  
-        public Juego() { 
+
+    public Juego() { 
 		addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -44,13 +37,13 @@ public class Juego extends JPanel{
 			}
 		});
 		setFocusable(true);
-                Sound.BACK.loop();
+        Sound.BACK.loop();
 	}
 	
 
-	private void move() {
+	public void move() {
 		ball.move();
-                racquet.move();
+        racquet.move();
 	}
 
 	@Override
@@ -66,27 +59,11 @@ public class Juego extends JPanel{
 		g2d.drawString(String.valueOf(getScore()), 10, 30);
 	}
         
-        public void gameOver() {
-                Sound.BACK.stop();
+   	public void gameOver() {
+        Sound.BACK.stop();
 		Sound.GAMEOVER.play();
 		JOptionPane.showMessageDialog(this, "your score is: " + getScore(),
 				"Game Over", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
-	}
-        
-
-	public static void main(String[] args) throws InterruptedException {
-		JFrame frame = new JFrame("Mini Tennis");
-		Juego game = new Juego();
-		frame.add(game);
-		frame.setSize(300, 400);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		
-		while (true) {
-			game.move();
-			game.repaint();
-			Thread.sleep(10); 
-		}
 	}
 }
