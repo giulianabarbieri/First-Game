@@ -40,7 +40,7 @@ public class Ball {
 		y = y + ya;
 	}
         private boolean collision() {
-		return game.racquet.getBounds().intersects(getBounds()); //polimorfismo <3 
+		return game.racquet.getBounds().intersects(getBounds()); 
 	}
 	public void paint(Graphics2D g) {
 		g.fillOval(x, y, DIAMETER, DIAMETER);
