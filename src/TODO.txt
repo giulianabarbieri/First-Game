@@ -1,0 +1,3 @@
+- Borrar Randomize22.wav. No se usa.
+- Por alguna razon, no me deja reproducir dos sonidos al mismo tiempo (el sonido de fondo mas el sonido de la bolita). Comente el sonido de la bolita.
+- Mejorar el disenio.

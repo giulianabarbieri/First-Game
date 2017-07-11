@@ -37,24 +37,25 @@ public class Juego extends JPanel{
 			}
 		});
 		setFocusable(true);
-        Sound.BACK.loop();
+		Sound.BACK.loop();
 	}
 	
-
-	public void move() {
+	// Notar el synchronized en move y paintComponent. La idea es que no
+	// queremos que se mueva y pinte al mismo tiempo, porque estos metodos
+	// modifican y acceden a los atributos de la pelota y la raqueta.
+	public synchronized void move() {
 		ball.move();
         racquet.move();
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
+	public synchronized void paintComponent(Graphics g) {
+		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		ball.paint(g2d); 
-                racquet.paint(g2d);
-                g2d.setColor(Color.GRAY);
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		ball.paint(g2d);
+        racquet.paint(g2d);
+        g2d.setColor(Color.GRAY);
 		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
 		g2d.drawString(String.valueOf(getScore()), 10, 30);
 	}

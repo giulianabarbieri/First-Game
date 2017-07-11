@@ -8,11 +8,10 @@ import static java.awt.image.ImageObserver.HEIGHT;
  * @author Giuliana
  */
 public class Racquet {
-    
 	int x = 0;
 	int xa = 0;
 	private Juego game;
-        private static final int Y = 330;
+    private static final int Y = 330;
 	private static final int WITH = 60;
 	private static final int HEIGHT = 20;
 
@@ -39,10 +38,12 @@ public class Racquet {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT)
 			xa = game.speed;
 	}
-        	public Rectangle getBounds() {
+    
+    public Rectangle getBounds() {
 		return new Rectangle(x, Y, WITH, HEIGHT);
 	}
-                public int getTopY() {
+    
+    public int getTopY() {
 		return Y - HEIGHT;
 	}
 }
